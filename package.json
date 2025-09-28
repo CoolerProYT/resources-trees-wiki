@@ -1,0 +1,24 @@
+{
+  "name": "resources-trees-wiki",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run postbuild",
+    "postbuild": "copy build-templates\\.htaccess dist\\.htaccess",
+    "preview": "vite preview",
+    "deploy": "cd dist && git add -A && git commit -m \"Deploy dist\" && git push"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "highlight.js": "^11.11.1",
+    "tailwindcss": "^4.1.13",
+    "vue": "^3.5.21",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.7"
+  }
+}
