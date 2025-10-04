@@ -184,19 +184,19 @@ export default {
                     minecraftVersion: "1.20.1",
                     modLoader: ["forge"],
                     bugFix: "✅",
-                    latestVersion: "1.0.0"
+                    latestVersion: "1.0.3"
                 },
                 {
                     minecraftVersion: "1.21.1",
                     modLoader: ["neoforge", "fabric"],
                     bugFix: "✅",
-                    latestVersion: "1.0.0"
+                    latestVersion: "1.0.3"
                 },
                 {
                     minecraftVersion: "1.21.9",
                     modLoader: ["neoforge", "forge", "fabric"],
                     bugFix: "✅",
-                    latestVersion: "1.0.0"
+                    latestVersion: "1.0.3"
                 }
             ]
         };
