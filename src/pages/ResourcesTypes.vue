@@ -106,11 +106,11 @@ onBeforeUnmount(() => {
 
 const type = [
     { key: "color", value: "-6543440", description: "ARGB color value of the resources type, converted from hexadecimal such as FFA3C4B1, you can use online converter to convert" },
+    { key: "leafDropChance", value: "0.5", description: "Chance for leaf fragment to drop when breaking resources leaves, from 0.0 - 1.0" },
     { key: "material", value: "minecraft:amethyst_block", description: "Item Id of the material item for the resources type, but this is currently useless for custom types, defined for datagen purpose only" },
-    { key: "saplingChance", value: "0.25", description: "Chance for sapling to drop when breaking resources leaves, from 0.0 - 1.0" },
-    { key: "secondaryDropChance", value: "0.5", description: "Chance for second leaf fragment to drop when breaking resources leaves, from 0.0 - 1.0" },
-    { key: "translationKey", value: "item.resourcestrees.amethyst", description: "The translation key for the resources type, you should add it to translation json file otherwise it will show `item.resourcestrees.amethyst Leaf Fragment` as the item/block name in game" },
-    { key: "weight", value: "5", description: "The weight for resources leaves to spawn when growing a tree in world, vanilla leaves is set to weight of 10" },
+    { key: "saplingDropChance", value: "0.25", description: "Chance for sapling to drop when breaking resources leaves, from 0.0 - 1.0" },
+    { key: "treeSimulatorTicks", value: "1200", description: "Processing time that Tree Simulator will use if recipe for the resource sapling is not defined." },
+    { key: "weight", value: "5", description: "This field is outdated and will be remove in future. There is no usage for this field since v1.3.0" },
 ];
 
 const format =
