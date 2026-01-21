@@ -8,7 +8,7 @@
     "build": "vite build && npm run postbuild",
     "postbuild": "copy build-templates\\.htaccess dist\\.htaccess",
     "preview": "vite preview",
-    "deploy": "cd dist && git add -A && git commit -m \"Deploy dist\" && git push"
+    "deploy": "npm run build && cd dist && git add -A  && git commit -m \"Deploy dist\" && git push"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",

@@ -21,7 +21,7 @@
                 <div class="mt-4">
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-400">
-                            <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+                            <thead class="text-xs uppercase bg-zinc-700 text-gray-400">
                             <tr>
                                 <th scope="col" class="px-3 md:px-6 py-3">
                                     MC Version
@@ -38,7 +38,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="version in versionData" class="border-b bg-gray-800 border-gray-700">
+                            <tr v-for="version in versionData" class="border-b bg-zinc-800 border-zinc-700">
                                 <th class="px-3 md:px-6 py-4">
                                     <span class="text-lg">{{ version.minecraftVersion }}</span>
                                 </th>
@@ -184,19 +184,25 @@ export default {
                     minecraftVersion: "1.20.1",
                     modLoader: ["forge"],
                     bugFix: "✅",
-                    latestVersion: "1.0.3"
+                    latestVersion: "1.5.1"
                 },
                 {
                     minecraftVersion: "1.21.1",
                     modLoader: ["neoforge", "fabric"],
                     bugFix: "✅",
-                    latestVersion: "1.0.3"
+                    latestVersion: "1.5.0"
                 },
                 {
-                    minecraftVersion: "1.21.9",
+                    minecraftVersion: "1.21.10",
                     modLoader: ["neoforge", "forge", "fabric"],
                     bugFix: "✅",
-                    latestVersion: "1.0.3"
+                    latestVersion: "1.5.0"
+                },
+                {
+                    minecraftVersion: "1.21.11",
+                    modLoader: ["neoforge", "forge", "fabric"],
+                    bugFix: "✅",
+                    latestVersion: "1.5.0"
                 }
             ]
         };

@@ -31,7 +31,7 @@ const props = defineProps({
 })
 
 const getImageSrc = (item) => {
-    const fileName = item.items.replaceAll(':', '__') + "__{'resourcestrees__resources_type'__'"  + item.components["resourcestrees:resources_type"].replace(':', '__') + "'}.png";
+    const fileName = item.items.replaceAll(':', '__') + "__{type__'"  + item.components["resourcestrees:resources_type"].replace(':', '__') + "'}.png";
     return images[`/src/assets/img/textures/${fileName}`]?.default || '';
 };
 </script>

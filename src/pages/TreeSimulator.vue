@@ -7,7 +7,7 @@
                     <p class="text-lg text-gray-300 mt-4">
                         Tree simulator is a block that can simulate tree growth and generate resources based on the type of tree.
                     </p>
-                    <div class="size-40 flex items-end bg-gray-800 p-2 rounded">
+                    <div class="size-40 flex items-end bg-zinc-800 p-2 rounded">
                         <img :src="treeSimulator" alt="treeSimulator">
                     </div>
                 </div>

@@ -1,8 +1,8 @@
 {
   "color": -6543440,
+  "leafDropChance": 0.25,
   "material": "minecraft:amethyst_block",
-  "saplingChance": 0.25,
-  "secondaryDropChance": 0.5,
-  "translationKey": "item.resourcestrees.amethyst",
+  "saplingDropChance": 0.125,
+  "treeSimulatorTicks": 800,
   "weight": 5
 }

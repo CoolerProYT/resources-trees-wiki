@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-950 w-full">
+    <div class="bg-zinc-900 w-full">
         <div class="px-2 py-2 w-full">
             <SideBarLink path="/Home" text="Home"/>
             <SideBarLink path="/TreeSimulator" text="Tree Simulator"/>

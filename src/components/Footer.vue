@@ -1,7 +1,7 @@
 <template>
     <div>
         <footer>
-            <div class="bg-gray-900 text-gray-50 py-4">
+            <div class="bg-zinc-950 text-gray-50 py-4">
                 <div class="w-full py-8 grid lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 gap-5">
                     <div class="px-20">
                         <div>

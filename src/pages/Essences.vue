@@ -16,10 +16,7 @@
                         Essences can be obtained by:
                     </p>
                     <div class="grid 2xl:grid-cols-2">
-                        <ShapelessRecipe :recipe="endEssence" />
-                        <ShapelessRecipe :recipe="fireEssence" />
-                        <ShapelessRecipe :recipe="natureEssence" />
-                        <ShapelessRecipe :recipe="waterEssence" />
+                        <ShapelessRecipe v-for="recipe in recipeList" :recipe="recipe.content" />
                     </div>
                 </div>
             </div>
@@ -45,12 +42,20 @@ import fireEssence from '@/assets/recipe/fire_essence.json'
 import natureEssence from '@/assets/recipe/nature_essence.json'
 import waterEssence from '@/assets/recipe/water_essence.json'
 import ShapelessRecipe from "@/components/ShapelessRecipe.vue";
+import TreeSimulatorOutputSlot from "@/components/TreeSimulatorOutputSlot.vue";
+import ComponentShapedRecipe from "@/components/ComponentShapedRecipe.vue";
 
 const activeSection = ref(null);
 
 const sections = ['essences', 'obtaining'];
 
 let observer;
+
+const recipes = import.meta.glob('@/assets/recipe/*_essence.json', { eager: true })
+const recipeList = Object.entries(recipes).map(([path, mod]) => ({
+    type: path.split("/").pop().replace(".json", ''),
+    content: mod.default
+}));
 
 onMounted(() => {
     const options = {

@@ -35,7 +35,7 @@ const getImageSrc = (item) => {
     let fileName;
 
     if (hasComponent) {
-        fileName = item.replaceAll(':', '__') + "__{'resourcestrees__resources_type'__'"  + props.drop.output.components["resourcestrees:resources_type"].replace(':', '__') + "'}.png";
+        fileName = item.replaceAll(':', '__') + "__{type__'"  + props.drop.output.components["resourcestrees:resources_type"].replace(':', '__') + "'}.png";
     }
     else{
         fileName = item.replaceAll('mod:', 'resourcestrees__') + '.png';

@@ -22,7 +22,7 @@
                 <span class="text-4xl font-bold">Custom Resources Type</span>
                 <div>
                     <p class="text-lg text-gray-300 mt-4">
-                        You can add as many resources types to the game as you want. But it must be placed under <CodeBlock source="{datapack_folder}/resourcestrees/resourcestrees/resources_type/{resource_name}.json" />
+                        You can add as many resources types to the game as you want. But it must be placed under <CodeBlock source="{datapack_folder}/resourcestrees/resources_type/{resource_name}.json" />
                     </p>
                     <UniversalTable :datas="type" />
                     <p class="text-lg text-gray-300 mt-4">
@@ -71,10 +71,10 @@ const typeList = Object.entries(types).map(([path, mod]) => ({
     type: path.split("/").pop().replace(".json", ''),
     material: mod.material,
     color: mod.color,
-    sapling_chance: mod.saplingChance,
-    secondary_drop_chance: mod.secondaryDropChance,
-    translation_key: mod.translationKey,
+    saplingDropChance: mod.saplingDropChance,
+    leafDropChance: mod.leafDropChance,
     weight: mod.weight,
+    treeSimulatorTicks: mod.treeSimulatorTicks,
 }));
 
 let observer;
@@ -116,10 +116,10 @@ const type = [
 const format =
 `{
   "color": -6543440,
+  "leafDropChance": 0.25,
   "material": "minecraft:amethyst_block",
-  "saplingChance": 0.25,
-  "secondaryDropChance": 0.5,
-  "translationKey": "item.resourcestrees.amethyst",
+  "saplingDropChance": 0.125,
+  "treeSimulatorTicks": 800,
   "weight": 5
 }`
 </script>

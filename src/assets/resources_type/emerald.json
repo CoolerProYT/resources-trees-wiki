@@ -1,8 +1,8 @@
 {
   "color": -16725933,
+  "leafDropChance": 0.25,
   "material": "minecraft:emerald_block",
-  "saplingChance": 0.25,
-  "secondaryDropChance": 0.5,
-  "translationKey": "item.resourcestrees.emerald",
+  "saplingDropChance": 0.125,
+  "treeSimulatorTicks": 1400,
   "weight": 5
 }

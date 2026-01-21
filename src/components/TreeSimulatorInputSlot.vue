@@ -26,7 +26,7 @@ const props = defineProps({
 })
 
 const getImageSrc = (item) => {
-    const fileName = item.replaceAll('mod:', 'resourcestrees__') + "__{'resourcestrees__resources_type'__'"  + props.component.replace(':', '__') + "'}.png";
+    const fileName = item.replaceAll('mod:', 'resourcestrees__') + "__{type__'"  + props.component.replace(':', '__') + "'}.png";
     return images[`/src/assets/img/textures/${fileName}`]?.default || '';
 };
 </script>

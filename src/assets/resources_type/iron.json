@@ -1,8 +1,8 @@
 {
   "color": -5194043,
+  "leafDropChance": 0.25,
   "material": "minecraft:iron_block",
-  "saplingChance": 0.25,
-  "secondaryDropChance": 0.5,
-  "translationKey": "item.resourcestrees.iron",
+  "saplingDropChance": 0.125,
+  "treeSimulatorTicks": 1200,
   "weight": 5
 }
