@@ -22,7 +22,7 @@
                 <span class="text-4xl font-bold">Custom Resources Type</span>
                 <div>
                     <p class="text-lg text-gray-300 mt-4">
-                        You can add as many resources types to the game as you want. But it must be placed under <CodeBlock source="{datapack_folder}/resourcestrees/resources_type/{resource_name}.json" />
+                        You can add as many resources types to the game as you want. But it must be placed under <CodeBlock source="{datapack_folder}/<namespace>/resourcestrees/resources_type/{resource_name}.json" />
                     </p>
                     <UniversalTable :datas="type" />
                     <p class="text-lg text-gray-300 mt-4">
