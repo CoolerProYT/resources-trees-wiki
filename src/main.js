@@ -8,6 +8,7 @@ import Saplings from "@/pages/Saplings.vue";
 import Essences from "@/pages/Essences.vue";
 import LeafFragment from "@/pages/LeafFragment.vue";
 import ResourcesTypes from "@/pages/ResourcesTypes.vue";
+import Config from "@/pages/Config.vue";
 
 const routes = [
     { path: '/Home', component: Home },
@@ -16,6 +17,7 @@ const routes = [
     { path: '/Essences', component: Essences },
     { path: '/LeafFragment', component: LeafFragment },
     { path: '/ResourcesTypes', component: ResourcesTypes },
+    { path: '/Config', component: Config },
     { path: '/:pathMatch(.*)*', redirect: '/Home' },
 ];
 

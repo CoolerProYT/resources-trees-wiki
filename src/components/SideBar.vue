@@ -7,6 +7,7 @@
             <SideBarLink path="/Essences" text="Essences"/>
             <SideBarLink path="/LeafFragment" text="Leaf Fragment"/>
             <SideBarLink path="/ResourcesTypes" text="Resources Types"/>
+            <SideBarLink path="/Config" text="Config"/>
         </div>
     </div>
 </template>
