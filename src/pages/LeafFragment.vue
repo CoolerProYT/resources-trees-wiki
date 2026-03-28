@@ -33,13 +33,13 @@
                     </div>
                 </div>
                 <div class="mt-3" id="neo21">
-                    <span class="text-3xl font-bold">NeoForge 1.21.1+</span>
+                    <span class="text-3xl font-bold">NeoForge 1.21.1</span>
                     <div>
                         <MarkdownRenderer :source="neo21" language="json" />
                     </div>
                 </div>
                 <div class="mt-3" id="fabric21">
-                    <span class="text-3xl font-bold">Fabric 1.21.1+</span>
+                    <span class="text-3xl font-bold">Fabric 1.21.1</span>
                     <div>
                         <MarkdownRenderer :source="fabric21" language="json" />
                     </div>
@@ -48,6 +48,18 @@
                     <span class="text-3xl font-bold">Forge 1.21.1+</span>
                     <div>
                         <MarkdownRenderer :source="forge21" language="json" />
+                    </div>
+                </div>
+                <div class="mt-3" id="neo23">
+                    <span class="text-3xl font-bold">NeoForge 1.21.3+</span>
+                    <div>
+                        <MarkdownRenderer :source="neo23" language="json" />
+                    </div>
+                </div>
+                <div class="mt-3" id="fabric23">
+                    <span class="text-3xl font-bold">Fabric 1.21.3+</span>
+                    <div>
+                        <MarkdownRenderer :source="fabric23" language="json" />
                     </div>
                 </div>
             </div>
@@ -60,9 +72,11 @@
                 <AnchorLink id="usage" name="Usage" :active-section="activeSection" />
                 <AnchorLink id="customRecipe" name="Using in Custom Recipes" :active-section="activeSection" />
                 <AnchorLink id="forge20" name="Forge 1.20.1" :active-section="activeSection" :is-sub="true" />
-                <AnchorLink id="neo21" name="NeoForge 1.21.1+" :active-section="activeSection" :is-sub="true" />
-                <AnchorLink id="fabric21" name="Fabric 1.21.1+" :active-section="activeSection" :is-sub="true" />
+                <AnchorLink id="neo21" name="NeoForge 1.21.1" :active-section="activeSection" :is-sub="true" />
+                <AnchorLink id="fabric21" name="Fabric 1.21.1" :active-section="activeSection" :is-sub="true" />
                 <AnchorLink id="forge21" name="Forge 1.21.1+" :active-section="activeSection" :is-sub="true" />
+                <AnchorLink id="neo23" name="Forge 1.21.3+" :active-section="activeSection" :is-sub="true" />
+                <AnchorLink id="fabric23" name="Forge 1.21.3+" :active-section="activeSection" :is-sub="true" />
             </div>
         </div>
     </div>
@@ -81,7 +95,7 @@ import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
 
 const activeSection = ref(null);
 
-const sections = ['leafFragment', 'obtaining', 'usage', 'customRecipe', 'forge20', 'neo21', 'fabric21', 'forge21'];
+const sections = ['leafFragment', 'obtaining', 'usage', 'customRecipe', 'forge20', 'neo21', 'fabric21', 'forge21', 'neo23', 'fabric23'];
 
 let observer;
 
@@ -112,7 +126,7 @@ onBeforeUnmount(() => {
 
 const forge20 =
 `{
-  "ingredients": {
+  "ingredients": { // or inside "key" in crafting recipe which would be something like "A"
     "type": "forge:partial_nbt",
     "item": "resourcestrees:leaf_fragment",
     "nbt": "{type:\\"resourcestrees:amethyst\\"}"
@@ -122,21 +136,20 @@ const forge20 =
 
 const neo21 =
 `{
-  "ingredients": {
-    "type": "neoforge:components",
+  "ingredients": { // or inside "key" in crafting recipe which would be something like "A"
+    "type": "resourcestrees:resources_type",
+    "base": "resourcestrees:leaf_fragment",
     "components": {
       "resourcestrees:resources_type": "resourcestrees:amethyst"
-    },
-    "items": "resourcestrees:leaf_fragment",
-    "strict": true
+    }
   }
 }
 `;
 
 const fabric21 =
 `{
-  "ingredients": {
-    "fabric:type": "fabric:components",
+  "ingredients": { // or inside "key" in crafting recipe which would be something like "A"
+    "fabric:type": "resourcestrees:resources_type",
     "base": {
       "item": "resourcestrees:leaf_fragment"
     },
@@ -149,13 +162,37 @@ const fabric21 =
 
 const forge21 =
 `{
-  "ingredients": {
+  "ingredients": { // or inside "key" in crafting recipe which would be something like "A"
     "type": "resourcestrees:data_component",
     "components": {
       "resourcestrees:resources_type": "resourcestrees:amethyst"
     },
     "items": "resourcestrees:leaf_fragment",
     "strict": true
+  }
+}
+`;
+
+const neo23 =
+`{
+  "ingredients": { // or inside "key" in crafting recipe which would be something like "A"
+    "neoforge:ingredient_type": "resourcestrees:resources_type",
+    "base": "resourcestrees:leaf_fragment",
+    "components": {
+      "resourcestrees:resources_type": "resourcestrees:amethyst"
+    }
+  }
+}
+`;
+
+const fabric23 =
+`{
+  "ingredients": { // or inside "key" in crafting recipe which would be something like "A"
+    "fabric:type": "resourcestrees:resources_type",
+    "base": "resourcestrees:leaf_fragment",
+    "components": {
+      "resourcestrees:resources_type": "resourcestrees:amethyst"
+    }
   }
 }
 `;
