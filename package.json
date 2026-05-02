@@ -1,0 +1,14 @@
+{
+  "name": "resourcestrees-wiki",
+  "version": "1.0.0",
+  "description": "Wiki for Minecraft Mod - ResourcesTrees",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "deploy": "npm run build && cd docs && cd .vitepress && cd dist && git add -A && git commit -m \"Deploy dist\" && git push --set-upstream origin resourcestrees"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}
