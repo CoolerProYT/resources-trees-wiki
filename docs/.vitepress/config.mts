@@ -33,17 +33,15 @@ export default defineConfig({
                 text: 'For Pack Developers',
                 items: [
                     {text: 'Custom Resources Types', link: '/datapacks/resources-types'},
+                    {text: 'Custom Tree Types', link: '/datapacks/tree-types'},
                     {text: 'Tree Simulator Recipes', link: '/datapacks/tree-simulator-recipes'},
                     {text: 'Sapling Recipes', link: '/datapacks/sapling-recipes'},
                 ],
             },
             {
-                text: 'KubeJS (NeoForge)',
+                text: 'For Mod Developers',
                 items: [
-                    {text: 'Overview', link: '/kubejs/overview'},
-                    {text: 'Custom Saplings', link: '/kubejs/custom-saplings'},
-                    {text: 'Custom Leaves', link: '/kubejs/custom-leaves'},
-                    {text: 'Limitations', link: '/kubejs/limitations'},
+                    {text: 'Plugin API', link: '/developer/plugin-api'},
                 ],
             },
         ],

@@ -1,56 +1,37 @@
 # Essence Items
 
-Essence items are craftable materials used as the crafting ingredient for certain resource types that don't have a natural vanilla block material.
+Essence Items are special crafting materials added by ResourcesTrees. They represent resources that don't have a single obvious block/item equivalent in vanilla Minecraft (like mob drops or elemental concepts).
 
-## Available Essences
+Essences are used as the **material** for their corresponding resource type when crafting resource saplings.
 
-| Item ID | Used For Type | Color |
-| --- | --- | --- |
-| `resourcestrees:fire_essence` | `fire` | `#E45323` |
-| `resourcestrees:water_essence` | `water` | `#1787D4` |
-| `resourcestrees:nature_essence` | `nature` | `#1a6e08` |
-| `resourcestrees:end_essence` | `end` | `#C5BE8B` |
-| `resourcestrees:bee_essence` | `bee` | `#EDC343` |
-| `resourcestrees:sculk_essence` | `sculk` | `#041820` |
-| `resourcestrees:skeleton_essence` | `skeleton` | `#eeeeee` |
-| `resourcestrees:spider_essence` | `spider` | `#1a0c20` |
-| `resourcestrees:chicken_essence` | `chicken` | `#A1A1A1` |
-| `resourcestrees:cow_essence` | `cow` | `#543936` |
-| `resourcestrees:rabbit_essence` | `rabbit` | `#8B5A2B` |
-| `resourcestrees:squid_essence` | `squid` | `#223B4D` |
-| `resourcestrees:turtle_essence` | `turtle` | `#315410` |
-| `resourcestrees:blaze_essence` | `blaze` | `#d4ae37` |
-| `resourcestrees:breeze_essence` | `breeze` | `#d5d6ff` |
-| `resourcestrees:dye_essence` | `dye` | `#72d4b3` |
-| `resourcestrees:ghast_essence` | `ghast` | `#F9F9F9` |
-| `resourcestrees:pig_essence` | `pig` | `#F9A195` |
-| `resourcestrees:sheep_essence` | `sheep` | `#FFFFFF` |
-| `resourcestrees:fish_essence` | `fish` | `#C1A76A` |
-| `resourcestrees:zombie_essence` | `zombie` | `#3e692d` |
+## All Essence Items
 
-## Crafting Recipes
+| Essence | Used For | Crafting Ingredients |
+|---|---|---|
+| **Fire Essence** | Fire trees | Fire Charge + Magma Block + Lava Bucket |
+| **Water Essence** | Water trees | Water Bucket + Kelp + Seagrass + Clay |
+| **Nature Essence** | Nature trees | Moss Block + Sugar Cane + Cactus + Wheat/Carrot/Potato |
+| **End Essence** | End trees | End Stone + Chorus Fruit + Chorus Flower + Purpur Block |
+| **Bee Essence** | Bee trees | Honey Block + Honeycomb Block (×2 each) |
+| **Sculk Essence** | Sculk trees | Sculk + Sculk Catalyst + Sculk Sensor + Sculk Shrieker + Echo Shard (×2) |
+| **Skeleton Essence** | Skeleton trees | Bone (×4) |
+| **Spider Essence** | Spider trees | Spider Eye (×4) + String (×4) |
+| **Chicken Essence** | Chicken trees | Chicken (×2) + Feather (×2) + Egg (×2) |
+| **Cow Essence** | Cow trees | Leather (×3) + Beef (×3) |
+| **Rabbit Essence** | Rabbit trees | Rabbit Hide (×2) + Rabbit (×2) + Rabbit Foot (×2) |
+| **Squid Essence** | Squid trees | Ink Sac (×3) + Glow Ink Sac (×3) |
+| **Turtle Essence** | Turtle trees | Turtle Egg (×3) + Turtle Scute (×3) |
+| **Blaze Essence** | Blaze trees | Blaze Rod (×4) |
+| **Breeze Essence** | Breeze trees | Breeze Rod (×4) |
+| **Dye Essence** | Dye trees | Lime Dye + Light Blue Dye + Cyan Dye + Purple Dye |
+| **Ghast Essence** | Ghast trees | Ghast Tear (×4) |
+| **Pig Essence** | Pig trees | Porkchop (×4) |
+| **Sheep Essence** | Sheep trees | Mutton (×2) + White Wool (×2) |
+| **Fish Essence** | Fish trees | Cod + Salmon + Tropical Fish + Pufferfish |
+| **Zombie Essence** | Zombie trees | Rotten Flesh (×4) |
 
-All essence items are crafted shapeless. Each requires a combination of mob drops or related materials. Recipes are visible in JEI.
+All essence recipes are **shapeless** — ingredient order does not matter.
 
-### Selected Recipes
+## Visual
 
-| Essence | Ingredients |
-| --- | --- |
-| Fire Essence | Fire Charge + Magma Block + Lava Bucket |
-| Water Essence | Water Bucket + Kelp + Seagrass + Clay Ball |
-| Nature Essence | Moss Block + Sugar Cane + Cactus + Wheat + Carrot + Potato |
-| End Essence | End Stone + Chorus Fruit + Chorus Flower + Purpur Block |
-| Bee Essence | 2× Honey Block + 2× Honeycomb Block |
-| Sculk Essence | Sculk + Sculk Catalyst + Sculk Sensor + Sculk Shrieker + 2× Echo Shard |
-| Skeleton Essence | 4× Bone |
-| Spider Essence | 4× Spider Eye + 4× String |
-| Chicken Essence | 2× Chicken + 2× Feather + 2× Egg |
-| Cow Essence | 3× Leather + 3× Beef |
-| Blaze Essence | 4× Blaze Rod |
-| Breeze Essence | 4× Breeze Rod |
-| Ghast Essence | 4× Ghast Tear |
-| Zombie Essence | 4× Rotten Flesh |
-
-## Visual Appearance
-
-All essence items use a single base texture (`item/essence`) that is tinted by a constant tint source at the type's color. Each essence appears as a colored orb/crystal in-game.
+Each essence item uses a shared base texture that is **color-tinted** to match its resource type color, so they are visually distinct while keeping a consistent look.

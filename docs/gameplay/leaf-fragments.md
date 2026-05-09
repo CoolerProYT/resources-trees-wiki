@@ -1,68 +1,52 @@
 # Leaf Fragments
 
-Leaf Fragments are the primary crafting ingredient in ResourcesTrees. They drop from [Resources Leaves](/gameplay/resources-leaves) and are used to craft actual resource items.
+Leaf Fragments are small material pieces dropped by resource leaves. They are the primary output of breaking or decaying resource tree leaves and can be crafted into useful items.
 
 ## Obtaining
 
-Leaf Fragments drop when Resources Leaves decay or are broken without Silk Touch or Shears.
+Leaf Fragments drop from resource leaves:
+- **Primary roll:** `leafDropChance` chance (default 25%)
+- **Bonus roll:** `leafDropChance × 0.5` chance (default 12.5%)
 
-| Source | Primary Drop | Secondary Drop |
-| --- | --- | --- |
-| Natural leaf decay | `random < leafDropChance` | `random < leafDropChance / 2` |
-| Player break (no silk touch/shears) | `random < leafDropChance` | `random < leafDropChance / 2` |
+They also appear as output from the Tree Simulator.
 
-Each resource type has its own `leafDropChance`. The default is `0.25` (25%).
+## Crafting into Resources
 
-## Item Name
+Leaf Fragments can be crafted back into raw materials using shaped recipes. Below is an overview of the crafting patterns used. Each pattern uses `A` = Leaf Fragment of the listed type, and `B` = Leaf Fragment of the secondary type.
 
-The item name is dynamically prefixed with the type name:
+### Stone & Earth
 
-| Type | Display Name |
-| --- | --- |
-| `iron` | Iron Leaf Fragment |
-| `diamond` | Diamond Leaf Fragment |
-| `netherite` | Netherite Leaf Fragment |
+| Output | Pattern | Fragments |
+|---|---|---|
+| Stone (×12) | `AAA / A A / AAA` | stone + coal (center) |
+| Cobblestone (×12) | `AAA / A A / AAA` | stone |
+| Deepslate (×12) | `AAA / A A / AAA` | deepslate + coal (center) |
+| Dirt (×12) | `AAA / A A / AAA` | dirt |
 
-## Item Data Component
+### Metals & Gems
 
-The resource type is stored as:
+| Output | Pattern | Fragments |
+|---|---|---|
+| Iron Ingot (×6) | `AAA / A A / AAA` | iron |
+| Copper Ingot (×8) | `AAA / A A / AAA` | copper |
+| Gold Ingot (×6) | `AAA / A A / AAA` | gold |
+| Lapis Lazuli (×12) | `AAA / A A / AAA` | lapis |
+| Emerald (×4) | `AAA / AAA / AAA` | emerald |
+| Diamond (×4) | `AAA / AAA / AAA` | diamond |
+| Netherite Ingot (×1) | `AAA / AAA / AAA` | netherite |
+| Coal (×12) | `AAA / A A / AAA` | coal |
 
-```
-resourcestrees:resources_type = "resourcestrees:<type_name>"
-```
+### Nature & Wood
 
-Fragments from different types **do not stack with each other**, even though they share the same item ID (`resourcestrees:leaf_fragment`).
+| Output | Pattern | Fragments |
+|---|---|---|
+| Oak Log (×8) | ` A  /  A  /  A ` | wood |
+| Various Saplings | varies | wood + nature |
 
-## Crafting Resources
-
-Leaf Fragments are crafted into resources using shaped crafting recipes. The pattern varies by output item.
-
-::: info
-All fragment crafting recipes are viewable in JEI. Each slot requires a fragment of the specific resource type — fragments of the wrong type will not satisfy the recipe.
+::: tip Full Recipe List
+There are over 100 Leaf Fragment crafting recipes covering logs, stones, minerals, plants, mob drops, dyes, foods, and more. Check the in-game recipe viewer (JEI/REI) for the complete list.
 :::
 
-### Pattern Examples
+## Visual
 
-**Circle** (`AAA / A_A / AAA`) — used for: Iron Ingot, Coal, Emerald, Spider Eye, Ink Sac, etc.
-
-**Cube** (`AAA / AAA / AAA`) — used for: Diamond, Netherite Ingot (rarer drops)
-
-**Line** (`___ / AAA / ___`) — used for: Leather, String, Bone, Ender Pearl, etc.
-
-**Straight** (`_A_ / _A_ / _A_`) — used for: Feather, Beef, Blaze Rod, Breeze Rod, etc.
-
-**Circle Surrounded** (`AAA / ABA / AAA`) — used for: Stone (with Coal center), Deepslate (with Coal center)
-
-**Two By Two** (`BA_ / AB_ / ___`) — used for: Clay Ball (Dirt + Water), Sand (Dirt + Fire), etc.
-
-There are also many custom patterns for specific items like Nether Star, Shulker Shell, Chorus Flower, etc.
-
-## Tips
-
-::: tip Sorting Storage
-Leaf Fragments of different types share the same item ID but different data components. Make sure your storage system supports component-based sorting to avoid mixing types in the same slot.
-:::
-
-::: tip Automation
-The [Tree Simulator](/gameplay/tree-simulator) automatically generates Leaf Fragments among its outputs. For bulk fragment collection, running multiple simulators with faster axe tiers is more efficient than farming trees manually.
-:::
+Leaf Fragments are visually tinted to match their resource type color, so you can tell different fragments apart at a glance.

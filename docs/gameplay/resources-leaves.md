@@ -1,71 +1,39 @@
-# Resources Leaves
+# Resource Leaves
 
-Resources Leaves are the blocks that form the canopy of a Resources tree. They drop [Leaf Fragments](/gameplay/leaf-fragments) on decay and are tinted to the color of their resource type.
+Resource Leaves are the leaves that grow on resource trees. They drop Leaf Fragments and occasionally a new sapling when broken or when they decay naturally.
 
-## Variants
+## Naming Convention
 
-| Block ID | Corresponding Sapling |
-| --- | --- |
-| `resourcestrees:resources_oak_leaves` | Resources Oak Sapling |
-| `resourcestrees:resources_spruce_leaves` | Resources Spruce Sapling |
-| `resourcestrees:resources_birch_leaves` | Resources Birch Sapling |
-| `resourcestrees:resources_jungle_leaves` | Resources Jungle Sapling |
-| `resourcestrees:resources_acacia_leaves` | Resources Acacia Sapling |
-| `resourcestrees:resources_dark_oak_leaves` | Resources Dark Oak Sapling |
-| `resourcestrees:resources_cherry_leaves` | Resources Cherry Sapling |
-| `resourcestrees:resources_pale_oak_leaves` | Resources Pale Oak Sapling |
+Leaves follow the naming pattern:
+
+```
+<resource_type>_<tree_type>_leaves
+```
+
+Examples:
+- `iron_oak_leaves`
+- `diamond_birch_leaves`
 
 ## Drop Behavior
 
-### Natural Decay or Broken Without Silk Touch / Shears
+When resource leaves break or decay (without Silk Touch or Shears), they can drop:
 
 | Drop | Condition |
-| --- | --- |
-| Leaf Fragment (primary) | `random < leafDropChance` |
-| Leaf Fragment (secondary) | `random < leafDropChance / 2` |
-| Resources Sapling | `random < saplingDropChance / 2` |
+|---|---|
+| **Sapling** | Random chance based on `saplingDropChance` (default 12.5%) |
+| **Leaf Fragment** | Random chance based on `leafDropChance` (default 25%) |
+| **Leaf Fragment (bonus)** | Additional roll at `leafDropChance × 0.5` (default 12.5%) |
 
-### Shears or Silk Touch
+### Silk Touch / Shears
 
-Drops the **leaves block** with its resource type component intact. No fragments are produced.
+Breaking resource leaves with Shears or a Silk Touch tool drops the leaves block itself instead of fragments.
 
-::: tip Silk Touch Leaves
-Leaves collected with Silk Touch or Shears can be re-placed as decorative blocks and retain their resource type and tint color.
-:::
+## Color Tinting
 
-## Loot Table
-
-The loot table for all Resources Leaves is set to `shears_or_silk_touch_only_drop`. All other drop logic (fragments, saplings) is handled in code by the block's `getDrops()` method.
-
-## Visual Appearance
-
-Resources Leaves use a `BlockTintSource` (`resourcestrees:resources_type_tint`) that reads the `ResourcesTypesBlockEntity` and returns the type's color value. If no type is assigned, the block renders with a white tint.
-
-Item tinting uses `ResourcesTypeTintSource`, a custom `ItemTintSource` registered as `resourcestrees:resources_type_tint`.
-
-## Block Entity
-
-Each placed Resources Leaves block has a `ResourcesTypesBlockEntity` synchronized to clients:
-
-```json
-{
-  "type": "resourcestrees:diamond"
-}
-```
-
-## Tags
-
-Resources Leaves are registered in:
-
-- `minecraft:leaves` block tag
-
-All Resources Leaves are **compostable** with a 30% chance.
+Resource leaves are tinted using the ARGB color defined in the resource type. This gives each tree a unique visual appearance without requiring separate textures.
 
 ## Flammability
 
-| Property | Value |
-| --- | --- |
-| Flammability | 60 |
-| Fire Spread Speed | 30 |
-
-Both values match vanilla leaves.
+Resource leaves are flammable (same as vanilla leaves):
+- **Flammability:** 60
+- **Fire spread speed:** 30

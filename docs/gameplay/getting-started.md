@@ -1,79 +1,37 @@
 # Getting Started
 
-This page provides basic information for ResourcesTrees.
-
-## Installation
-
-ResourcesTrees can be downloaded on CurseForge and Modrinth.
-
-| Platform | Link |
-| --- | --- |
-| CurseForge | [Download from CurseForge](https://www.curseforge.com/minecraft/mc-mods/resourcestrees) |
-| Modrinth | [Download from Modrinth](https://modrinth.com/mod/resourcestrees) |
-
-## Supported Versions
-
-| Mod Loader              | Minecraft Version | Maintained |
-|-------------------------|-------------------|------------|
-| NeoForge, Fabric        | 26.1.x            | ✅          |
-| NeoForge, Fabric, Forge | 1.21.11           | ❌          |
-| NeoForge, Fabric, Forge | 1.21.10           | ❌          |
-| NeoForge, Fabric        | 1.21.1            | ❌          |
-| Forge                   | 1.20.1            | ❌         |
-
-::: info
-Version that are no longer maintained will still receive critical bug fixes.
-:::
+ResourcesTrees adds resource-producing trees to Minecraft. Each tree is a combination of a **Resource Type** (what it drops) and a **Tree Type** (what shape it grows as), giving you a large variety of saplings to collect and use.
 
 ## How It Works
 
-ResourcesTrees adds a resource-farming loop using infused trees:
+1. **Find or craft a resource sapling** — e.g. an *Iron Oak Sapling* or a *Diamond Birch Sapling*.
+2. **Plant it** like any normal sapling. It will grow into a full tree using the corresponding vanilla tree shape (oak, spruce, birch, etc.).
+3. **Break the leaves** to collect **Leaf Fragments** and occasionally another sapling.
+4. **Use the Tree Simulator** to automate resource production without needing to plant trees in the world.
 
-1. **Craft a Resources Sapling** — place a vanilla sapling in the center of a cross pattern with a resource material in the four cardinal slots.
-2. **Grow the tree** — plant on valid soil and wait, or use bone meal.
-3. **Harvest Leaf Fragments** — when leaves decay or are broken (without Silk Touch/Shears), they drop colored Leaf Fragments matching the resource type.
-4. **Craft resources** — use Leaf Fragments in shaped crafting recipes to produce the actual resource items.
-5. **Automate** — use the [Tree Simulator](/gameplay/tree-simulator) with an axe for hands-free production.
+## Obtaining Saplings
 
-## Crafting a Resources Sapling
-
-Place a vanilla sapling in the **center** and the resource material in the **four cardinal slots** (top, bottom, left, right):
+Resource saplings are crafted by surrounding the original vanilla sapling with the corresponding resource material in a `+` pattern:
 
 ```
-   [M]
-[M][S][M]
-   [M]
+ M 
+MSM
+ M 
 ```
 
-`S` = any vanilla sapling (Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Cherry, Pale Oak)  
-`M` = any item that matches a registered resource type's material
+- `M` = the resource material (e.g. Iron Block for iron trees)
+- `S` = the vanilla sapling (e.g. Oak Sapling for oak-shaped trees)
 
-The recipe automatically detects which ResourcesType the material belongs to and produces the corresponding Resources Sapling with that type applied.
+The crafting recipe is generated automatically for every combination.
 
-::: tip
-You can use item tags as material. For example, the `Wood` type uses the `#c:logs` tag — any log item will work in the cardinal slots.
-:::
+## Leaf Fragments
 
-## Available Sapling Variants
+When you break or decay the leaves of a resource tree, they drop **Leaf Fragments** — small pieces of the resource material. These can be crafted back into the original resource item using shaped recipes.
 
-| Sapling | Tree Shape |
-| --- | --- |
-| Resources Oak Sapling | Standard oak tree |
-| Resources Spruce Sapling | Tall spruce (supports 2×2 mega) |
-| Resources Birch Sapling | Tall birch |
-| Resources Jungle Sapling | Tall jungle (supports 2×2 mega) |
-| Resources Acacia Sapling | Wide acacia |
-| Resources Dark Oak Sapling | **Requires 2×2 planting** |
-| Resources Cherry Sapling | Cherry blossom |
-| Resources Pale Oak Sapling | Pale oak |
+See [Leaf Fragments](/gameplay/leaf-fragments) for the full crafting recipe list.
 
-All sapling variants support all 50+ resource types.
+## Tree Simulator
 
-## Mod Compatibility
+The **Tree Simulator** block automates resource production. Place a resource sapling inside it (along with an axe to speed it up) and it will periodically produce resource outputs without growing a tree in the world.
 
-| Mod | Status | Notes |
-| --- | --- | --- |
-| JEI | ✅ Full support | All Tree Simulator and crafting recipes shown |
-| JADE / Waila | ✅ Full support | Shows resource type name on hover |
-| Tree Harvester | ✅ Supported | Harvested saplings retain resource type |
-| KubeJS | ✅ NeoForge only | Register custom sapling and leaves blocks |
+See [Tree Simulator](/gameplay/tree-simulator) for full details.

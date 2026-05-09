@@ -1,125 +1,88 @@
-# Custom Resources Types
+# Custom Resource Types
 
-Resources Types are registered in a datapack registry (`resourcestrees:resources_type`). You can add new types, override existing ones, or remove built-in types entirely through datapacks.
+You can add your own resource types by dropping JSON files into the config directory. No coding required.
 
 ## File Location
 
 ```
-data/<namespace>/resourcestrees/resources_type/<name>.json
+config/resourcestrees/resources_type/<name>.json
 ```
+
+The **filename** (without `.json`) is used as the type's unique identifier. The `name` field inside the JSON must match.
+
+The directory is created automatically on first launch.
 
 ## JSON Format
 
 ```json
 {
-  "material": "<item_id>",
-  "color": <ARGB integer>,
-  "weight": <int>,
-  "saplingDropChance": <float>,
-  "leafDropChance": <float>,
-  "treeSimulatorTicks": <int>
-}
-```
-
-## Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `material` | String | Item ID or item tag (prefix with `#`). Used as the crafting ingredient for saplings. |
-| `color` | Integer | ARGB color applied to leaves, saplings, and fragments. |
-| `weight` | Integer | Relative weight (higher = more common in future worldgen contexts). |
-| `saplingDropChance` | Float (0.0–1.0) | Probability a sapling drops when leaves decay. |
-| `leafDropChance` | Float (0.0–1.0) | Probability a Leaf Fragment drops when leaves decay. |
-| `treeSimulatorTicks` | Integer | Ticks per harvest cycle in the Tree Simulator (20 ticks = 1 second). |
-
-### Material Field
-
-**Single item:**
-
-```json
-"material": "minecraft:diamond"
-```
-
-**Item tag:**
-
-```json
-"material": "#c:ores/diamond"
-```
-
-### Color Field
-
-The `color` field is a **signed ARGB integer**. To convert a hex color:
-
-```
-0xFF<RR><GG><BB>
-```
-
-For example, `#E60050` (ruby red) = `0xFFE60050` = `-1678288` as a signed integer.
-
-You can also use online ARGB converters or the formula: `-(0x01000000 - 0x00RRGGBB)` for fully opaque colors.
-
-## Example: Adding a Ruby Type
-
-`data/mymod/resourcestrees/resources_type/ruby.json`
-
-```json
-{
-  "material": "mymod:ruby_shard",
-  "color": -1678288,
+  "name": "ruby",
+  "material": "minecraft:redstone",
+  "color": -3342336,
   "weight": 4,
-  "saplingDropChance": 0.10,
-  "leafDropChance": 0.20,
-  "treeSimulatorTicks": 1500
+  "saplingDropChance": 0.1,
+  "leafDropChance": 0.2,
+  "treeSimulatorTicks": 1400
 }
 ```
 
-## Example: Using a Tag as Material
+### Fields
 
-`data/mypack/resourcestrees/resources_type/raw_iron.json`
+| Field | Description |
+|---|---|
+| `name` | Unique identifier. Must match the filename. |
+| `material` | Item registry name used to craft the sapling. Prefix with `#` for an item tag. |
+| `color` | ARGB integer tint color applied to leaves, sapling, and leaf fragment. |
+| `weight` | No longer used (deprecated). |
+| `saplingDropChance` | Chance (0.0–1.0) a sapling drops when leaves decay or are broken. |
+| `leafDropChance` | Chance (0.0–1.0) a leaf fragment drops from a leaves block. |
+| `treeSimulatorTicks` | Ticks per growth cycle in the Tree Simulator. Lower = faster. |
+
+## Using an Item Tag as Material
+
+Prefix the tag path with `#` to use an item tag:
 
 ```json
 {
-  "material": "#c:raw_materials/iron",
-  "color": -5260105,
-  "weight": 5,
-  "saplingDropChance": 0.15,
-  "leafDropChance": 0.30,
-  "treeSimulatorTicks": 1100
+  "name": "wood",
+  "material": "#minecraft:logs",
+  "color": -7508381
 }
 ```
 
-## Example: Overriding Diamond
+## Color Conversion
 
-To make Diamond rarer, override the built-in type with the same path:
+The `color` field is an **ARGB integer** (signed 32-bit). To convert from a hex color:
 
-`data/mypack/resourcestrees/resources_type/diamond.json`
+```
+#RRGGBB → 0xFF + RR + GG + BB as a signed int
+```
+
+For example, `#CC0000` (dark red) = `0xFFCC0000` = `-3342336` as a signed int.
+
+You can calculate it in Java: `(int) 0xFFCC0000`
+
+Or use an online signed 32-bit int converter.
+
+## Example: Ruby
+
+`config/resourcestrees/resources_type/ruby.json`
 
 ```json
 {
-  "material": "minecraft:diamond_block",
-  "color": 4245717247,
-  "weight": 1,
-  "saplingDropChance": 0.04,
-  "leafDropChance": 0.08,
-  "treeSimulatorTicks": 2400
+  "name": "ruby",
+  "material": "minecraft:redstone",
+  "color": -3342336,
+  "saplingDropChance": 0.1,
+  "leafDropChance": 0.2,
+  "treeSimulatorTicks": 1400
 }
 ```
 
-::: info Namespace Note
-To override a built-in type, the file path must match exactly. The built-in types use the `resourcestrees` namespace, so your file must be at `data/resourcestrees/resourcestrees/resources_type/<name>.json` in your datapack — or simply match the same registry path.
-:::
+This creates:
+- `ruby_oak_sapling`, `ruby_birch_sapling`, … (one per tree type)
+- `ruby_oak_leaves`, `ruby_birch_leaves`, …
+- `ruby_leaf_fragment`
 
-## What Gets Automatically Wired Up
+All tinted with the specified red color.
 
-Once a new type is registered:
-
-| Feature | Status |
-| --- | --- |
-| Sapling crafting recipe | ✅ Auto-detected by `ResourcesSaplingRecipe` |
-| Creative tab entries | ✅ All 8 sapling variants + leaves + fragments |
-| Leaf Fragment drops | ✅ Automatically drops from leaves |
-| Tree Simulator (default recipe) | ✅ Uses built-in fallback formula |
-| JEI recipe display | ✅ Shown automatically |
-| Item and block tinting | ✅ Uses the `color` field |
-
-You do **not** need to add custom crafting recipes for fragment→resource production unless you want a non-default pattern. The sapling crafting recipe works for all types without modification.
