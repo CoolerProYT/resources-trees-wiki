@@ -19,6 +19,7 @@ export default defineConfig({
                     text: 'Mod Information',
                     items: [
                         {text: 'Getting Started', link: '/gameplay/getting-started'},
+                        {text: 'Updating Old Versions', link: '/gameplay/updating'},
                         {text: 'Resources Types', link: '/gameplay/resources-types-list'},
                         {text: 'Resources Saplings', link: '/gameplay/resources-saplings'},
                         {text: 'Resources Leaves', link: '/gameplay/resources-leaves'},
