@@ -114,5 +114,5 @@ com.example.mymod.MyPlugin
 | `originalLeaves` | Registry name of the vanilla leaves to copy properties from |
 | `log` | Registry name of the log block used as the trunk |
 
-## Model & Texture for TreeType
-Please see [tree type models](/datapacks/tree-types#block-model-item-model) and [tree type textures](/datapacks/tree-types#textures) for more information.
+## Texture for TreeType
+Please see [tree type textures](/datapacks/tree-types#textures) for more information.

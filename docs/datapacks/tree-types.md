@@ -36,60 +36,6 @@ config/resourcestrees/tree_type/<name>.json
 | `originalLeaves` | Registry name of the vanilla leaves to copy block properties from                                                                                              |
 | `log` | Registry name of the log block used as the trunk and for Tree Simulator recipe generation                                                                      |
 
-::: warning Block and Item Models
-Client items and block states are generated automatically. However, you may need to provide **block model** and **item model** JSON files for new tree types if the auto-generated textures don't look right. Place them in your resourcepack under:
-- `assets/resourcestrees/models/block/<name>_sapling.json`
-- `assets/resourcestrees/models/block/<name>_leaves.json`
-
-This might be able to auto generate in the future version. Meanwhile, please add them manually.
-:::
-
-## Block Model & Item Model
-Please manually add the block/item model manually until the mod is updated to auto generate it in runtime.
-
-### Block Models
-Place the block models file in:
-```
-assets/resourcestrees/models/block/
-```
-:::code-group
-```json5 [oak_leaves.json]
-{
-  "parent": "minecraft:block/leaves",
-  "textures": {
-    "all": "resourcestrees:block/oak_leaves" // Location defined in Tree Type
-  }
-}
-```
-
-```json5 [oak_sapling.json]
-{
-  "parent": "resourcestrees:block/cross_tinted",
-  "textures": {
-    "cross": "resourcestrees:block/oak_sapling", // Location defined in Tree Type
-    "cross_tinted": "resourcestrees:block/oak_sapling_layer1" // Location defined in Tree Type with '_layer1'= at the end
-  }
-}
-```
-:::
-
-### Item Model
-Place the block models file in:
-```
-assets/resourcestrees/models/item/
-```
-:::code-group
-```json5 [oak_sapling.json]
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "resourcestrees:block/oak_sapling", // Location defined in Tree Type
-    "layer1": "resourcestrees:block/oak_sapling_layer1" // Location defined in Tree Type with '_layer1'= at the end
-  }
-}
-```
-:::
-
 ## Textures
 Texture is required for a new TreeType.
 

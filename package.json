@@ -9,6 +9,7 @@
     "deploy": "npm run build && cd docs && cd .vitepress && cd dist && git add -A && git commit -m \"Deploy dist\" && git push --set-upstream origin resourcestrees"
   },
   "devDependencies": {
-    "vitepress": "^1.6.3"
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.25"
   }
 }
