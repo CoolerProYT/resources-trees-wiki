@@ -4,8 +4,9 @@ You can add your own resource types by creating a datapack.
 
 ## File Location
 
+The first `resourcestrees` is the mod id, second `resourcestrees` is namespace of the data pack registries.
 ```
-{datapack_root}/<namespace>/resourcestrees/resources_type/{resource_name}.json
+{datapack_root}/resourcestrees/resourcestrees/resources_type/{resource_name}.json
 ```
 
 The **filename** (without `.json`) is used as the type's unique identifier.
