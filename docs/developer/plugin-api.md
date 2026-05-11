@@ -16,7 +16,7 @@ ResourcesTrees is published on a Maven repository.
 repositories {
     maven {
         name = "CoolerProMC Maven"
-        url = "https://maven.coolerpromc.com"
+        url = "https://maven.coolerpromc.com/releases"
     }
 }
 
@@ -37,7 +37,8 @@ dependencies {
 ### `gradle.properties`
 
 ```properties
-resourcestrees_version=26.1.2.100
+minecraft_version=26.1.2
+resourcestrees_version=26.1.2.111
 ```
 
 Replace `26.1.2.100` with the actual latest version.
