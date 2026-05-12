@@ -5,24 +5,27 @@ The Tree Simulator's growth speed scales with the type of axe placed in the axe 
 ## File Location
 
 ```
-config/resourcestrees/axe.json
+config/resourcestrees-common.conf
 ```
 
 This file is created automatically on first launch with default values.
 
-## Format
+## Format (Hocon)
 
-```json
-{
-  "values": {
-    "minecraft:wooden_axe": 1.0,
-    "minecraft:stone_axe": 2.0,
-    "minecraft:iron_axe": 3.0,
-    "minecraft:golden_axe": 6.0,
-    "minecraft:diamond_axe": 4.0,
-    "minecraft:netherite_axe": 5.0
+```bash
+treeSimulator {
+  # The Tree Simulator growth speed scales with the type of axe placed in the axe slot. 
+  # The key of each entry should be a valid axe item id.
+  axe {
+    "minecraft:stone_axe": 2
+    "minecraft:golden_axe": 6
+    "minecraft:diamond_axe": 4
+    "minecraft:iron_axe": 3
+    "minecraft:netherite_axe": 7
+    "minecraft:wooden_axe": 1
   }
 }
+
 ```
 
 ## Default Values

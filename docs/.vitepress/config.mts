@@ -31,7 +31,7 @@ export default defineConfig({
                 {
                     text: 'Configurations',
                     items: [
-                        {text: 'Axe Speed Config', link: '/config/axe-config'},
+                        {text: 'Common Config', link: '/config/axe-config'},
                     ],
                 },
                 {
@@ -41,6 +41,7 @@ export default defineConfig({
                         {text: 'Custom Tree Types', link: '/datapacks/tree-types'},
                         {text: 'Tree Simulator Recipes', link: '/datapacks/tree-simulator-recipes'},
                         {text: 'Sapling Recipes', link: '/datapacks/sapling-recipes'},
+                        {text: 'Tags', link: '/datapacks/tags'},
                     ],
                 },
                 {
