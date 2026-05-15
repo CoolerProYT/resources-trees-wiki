@@ -41,6 +41,7 @@ export default defineConfig({
                         {text: 'Custom Tree Types', link: '/datapacks/tree-types'},
                         {text: 'Tree Simulator Recipes', link: '/datapacks/tree-simulator-recipes'},
                         {text: 'Sapling Recipes', link: '/datapacks/sapling-recipes'},
+                        {text: 'Leaf Fragment Recipes', link: '/datapacks/leaf-fragment-recipes'},
                         {text: 'Tags', link: '/datapacks/tags'},
                     ],
                 },
