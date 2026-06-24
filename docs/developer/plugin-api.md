@@ -37,11 +37,11 @@ dependencies {
 ### `gradle.properties`
 
 ```properties
-minecraft_version=26.1.2
-resourcestrees_version=26.1.2.111
+minecraft_version=26.3
+resourcestrees_version=26.3.0.0
 ```
 
-Replace `26.1.2.100` with the actual latest version.
+Replace `26.3.0.0` with the actual latest version.
 
 ## Implementing the Plugin
 
@@ -71,24 +71,53 @@ public class MyPlugin implements IResourcesTreesPlugin {
                 ResourceLocation.withDefaultNamespace("block/oak_leaves"),   // leavesTexture
                 "minecraft:oak_sapling",                         // originalSapling
                 "minecraft:oak_leaves",                          // originalLeaves
-                "minecraft:oak_log"                              // log
+                "minecraft:oak_log",                             // log
+                0.01f,                                           // particle chance
+                AmbientLeavesBlockSoundPlayer.noAmbientSound()   // leavesBlockSoundPlayer
+        ));
+    }
+
+    @Override
+    public void registerGrowerType(IGrowerTypeRegistry registry) {
+        // Reference vanilla tree features directly via TreeFeatures
+        registry.register(new GrowerType(
+                "oak",                                           // name (matches TreeType#treeGrowerName)
+                List.of(                                         // trees
+                        new Weighted<>(TreeFeatures.OAK, 9),
+                        new Weighted<>(TreeFeatures.FANCY_OAK, 1)),
+                List.of(),                                       // megaTrees (may be empty)
+                List.of(new Weighted<>(TreeFeatures.OAK_BEES_005, 1)),  // flowerTrees (may be empty)
+                Optional.of(TreeFeatures.OAK)                    // shortestTreeType
         ));
     }
 }
 ```
 
-### 2. Register via ServiceLoader
+::: tip
+You can reference vanilla tree features directly through `net.minecraft.data.worldgen.features.TreeFeatures` (e.g. `TreeFeatures.OAK`, `TreeFeatures.FANCY_OAK`, `TreeFeatures.SPRUCE`) instead of building a `ResourceKey` by hand.
+:::
 
-Create the following file in your mod's resources:
+### 2. Register to EntryPoint
 
+#### NeoForge
+
+Use `@ResourcesTreesPlugin` annotation.
+
+```java
+@ResourcesTreesPlugin
+public class MyPlugin implements IResourcesTreesPlugin {
+}
 ```
-resources/META-INF/services/com.coolerpromc.resourcestrees.api.IResourcesTreesPlugin
-```
 
-With your implementation's fully qualified class name as the file content:
+#### Fabric
 
-```
-com.example.mymod.MyPlugin
+Add `resources_trees_plugin` entrypoint to `fabric.mod.json`
+```json
+"entrypoints": {
+  "resources_trees_plugin": [
+    "com.coolerpromc.resourcestrees.api.internal.InternalResourcesTreesPlugin"
+  ]
+}
 ```
 
 ## `ResourcesType.Builder` Parameters
@@ -105,15 +134,37 @@ com.example.mymod.MyPlugin
 
 ## `TreeType` Parameters
 
-| Parameter | Description |
-|---|---|
-| `name` | Unique identifier (e.g. `"oak"`, `"birch"`) |
-| `treeGrowerName` | Key in `TreeGrower.GROWERS` (e.g. `"oak"`, `"spruce"`) |
-| `saplingTexture` | `Identifier` of the sapling texture |
-| `leavesTexture` | `Identifier` of the leaves texture |
-| `originalSapling` | Registry name of the vanilla sapling to copy properties from |
-| `originalLeaves` | Registry name of the vanilla leaves to copy properties from |
-| `log` | Registry name of the log block used as the trunk |
+| Parameter | Required | Default | Description |
+|---|---|---|---|
+| `name` | ✅ | — | Unique identifier (e.g. `"oak"`, `"birch"`) |
+| `treeGrowerName` | ✅ | — | Name of the `GrowerType` used to grow this tree (e.g. `"oak"`, `"spruce"`) |
+| `saplingTexture` | ✅ | — | `Identifier` of the sapling texture |
+| `leavesTexture` | ✅ | — | `Identifier` of the leaves texture |
+| `originalSapling` | ✅ | — | Registry name of the vanilla sapling to copy properties from |
+| `originalLeaves` | ✅ | — | Registry name of the vanilla leaves to copy properties from |
+| `log` | ✅ | — | Registry name of the log block used as the trunk |
+| `particle` | ❌ | `0.01f` | Per-tick chance (`0.0`–`1.0`) for the leaves block to spawn falling tinted leaf particles |
+| `leavesBlockSoundPlayer` | ❌ | `AmbientLeavesBlockSoundPlayer.noAmbientSound()` | Controls the ambient rustling sound emitted by the leaves block |
+
+::: tip
+`particle` and `leavesBlockSoundPlayer` are new in `26.1.2.111`. They are optional when defining a tree type from a [config file](/datapacks/tree-types), but the Java record's canonical constructor requires all parameters — pass `0.01f` and `AmbientLeavesBlockSoundPlayer.noAmbientSound()` to keep the defaults.
+:::
+
+## `GrowerType` Parameters
+
+A `GrowerType` defines which world-gen tree features a sapling can grow into. Its `name` is referenced by `TreeType#treeGrowerName`.
+
+| Parameter | Required | Default | Description |
+|---|---|---|---|
+| `name` | ✅ | — | Unique identifier, referenced by `TreeType#treeGrowerName` |
+| `trees` | ✅ | — | `List<Weighted<ResourceKey<Feature>>>` of features used for normal single-sapling trees (must not be empty) |
+| `megaTrees` | ✅ | — | `List<Weighted<ResourceKey<Feature>>>` of features used for 2×2 mega trees (may be empty) |
+| `flowerTrees` | ✅ | — | `List<Weighted<ResourceKey<Feature>>>` of flowering variants, e.g. bee-nest trees (may be empty) |
+| `shortestTreeType` | ✅ | — | `Optional<ResourceKey<Feature>>` fallback feature used when there is not enough space for a full tree |
+
+`Weighted` is Minecraft's `net.minecraft.util.random.Weighted` — wrap each feature key with a weight (`new Weighted<>(featureKey, weight)`); higher weights are chosen more often.
+
+The `GrowerType` for a `TreeType` can also be supplied from a [config file](/datapacks/grower-types) without writing code.
 
 ## Texture for TreeType
 Please see [tree type textures](/datapacks/tree-types#textures) for more information.

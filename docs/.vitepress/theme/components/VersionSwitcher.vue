@@ -9,7 +9,8 @@ const isOpen = ref(false)
 
 // List all versions with their paths
 const versions = [
-    {label: 'v26.1.2.100+', path: '/'},
+    {label: 'v26.3.0.0+', path: '/'},
+    {label: 'v26.1.2.100+', path: '/v2601/'},
     {label: 'Old Versions', path: '/old/'},
 ]
 

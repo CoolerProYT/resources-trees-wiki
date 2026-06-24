@@ -5,6 +5,9 @@ hero:
   name: "ResourcesTrees Wiki"
   text: "Resource-producing trees for Minecraft"
   tagline: Grow and harvest materials from trees — fully customizable for modpack makers and developers.
+  image:
+    src: /logo.png
+    alt: Resources Trees Logo
   actions:
     - theme: brand
       text: Get Started
